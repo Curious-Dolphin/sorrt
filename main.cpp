@@ -15,14 +15,29 @@ void bubbleSort(std::array<int, MAX>& input){
     }
 }
 
-void selectionSort(){
-    
+void selectionSort(std::array<int, MAX>& input){
+    for(auto ex_it = input.begin(); ex_it!= input.end(); ex_it++){
+        auto min = ex_it;
+        for (auto it = ex_it+1; it!= input.end(); it++){
+            if(*it< *ex_it){
+                min = it;
+            }
+        }
+        if (*ex_it != *min) {
+            *ex_it= *ex_it+ *min;
+            *min = *ex_it- *min;
+            *ex_it = *ex_it - *min;
+        }
+
+    }
 }
+    
+
 
 
 int main(){
-    std::array<int, MAX> prova{2,4,1,6,7,7};
-    bubbleSort(prova);
+    std::array<int, MAX> prova{2,4,1,6,7,6};
+    selectionSort(prova);
         for (auto i : prova){
         std::cout << i  << "\n";
     }    
